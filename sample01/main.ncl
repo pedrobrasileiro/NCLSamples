@@ -12,13 +12,15 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 		</transitionBase>
 		<regionBase>
 			<region id="rgTela" width="800" height="600">
-				<region id="rgLua"  zIndex="2" width="100%" height="100%">
+				<region id="rgImageLeft"  zIndex="2" width="50%" height="100%">
 				</region>
+                                <region id="rgImageRight" width="50%" height="100%" top="0" right="0"/>
 			</region>
 		</regionBase>
 		<descriptorBase>
-			<descriptor id="dLua" region="rgLua" focusIndex="luaIdx">
+			<descriptor id="dImageLeft" region="rgImageLeft" focusIndex="luaIdx">
 			</descriptor>		
+                        <descriptor id="dImageRight" region="rgImageRight"/>
 		</descriptorBase>
 		<connectorBase>
 		</connectorBase>
@@ -28,8 +30,10 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 		<port id="pInicioEnquete" component="enquete"/>
 		
 		<context id="enquete">
-			<port id="pInicio" component="lua"/>
-			<media id="lua" type="application/x-ginga-NCLua" src="main.lua" descriptor="dLua"/>
+			<port id="pImageLeft" component="imageLeft"/>
+                        <port id="pImageRight" component="imageRight"/>
+			<media id="imageLeft" type="application/x-ginga-NCLua" src="imageLeft.lua" descriptor="dImageLeft"/>
+                        <media id="imageRight" type="application/x-ginga-NCLua" src="imageRight.lua" descriptor="dImageRight"/>
 			<media type="application/x-ginga-settings" id="programSettings">
 				<property name="service.currentKeyMaster" value="luaIdx"/>
 				<property name="service.currentFocus" value="luaIdx"/>
