@@ -14,13 +14,13 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 			<region id="rgTela" width="800" height="600">
 				<region id="rgImageLeft"  zIndex="2" width="50%" height="100%">
 				</region>
-                                <region id="rgImageRight" width="50%" height="100%" top="0" right="0"/>
+                                <region id="rgImageRight"  width="50%" height="100%" top="0" right="0"/>
 			</region>
 		</regionBase>
 		<descriptorBase>
-			<descriptor id="dImageLeft" region="rgImageLeft" focusIndex="luaIdx">
+			<descriptor id="dImageLeft" region="rgImageLeft" focusIndex="1" moveRight="2">
 			</descriptor>		
-                        <descriptor id="dImageRight" region="rgImageRight"/>
+                        <descriptor id="dImageRight" region="rgImageRight" focusIndex="2" moveLeft="1"/>
 		</descriptorBase>
 		<connectorBase>
 		</connectorBase>
@@ -35,8 +35,8 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 			<media id="imageLeft" type="application/x-ginga-NCLua" src="imageLeft.lua" descriptor="dImageLeft"/>
                         <media id="imageRight" type="application/x-ginga-NCLua" src="imageRight.lua" descriptor="dImageRight"/>
 			<media type="application/x-ginga-settings" id="programSettings">
-				<property name="service.currentKeyMaster" value="luaIdx"/>
-				<property name="service.currentFocus" value="luaIdx"/>
+				<property name="service.currentKeyMaster" value="1"/>
+				<property name="service.currentFocus" value="1"/>
 			</media>
 	    </context>
 	</body>
