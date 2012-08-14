@@ -18,6 +18,7 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 			</region>
 		</regionBase>
 		<descriptorBase>
+			<descriptor id="dbackground" region="rgTela"/>
 			<descriptor id="dImageLeft" region="rgImageLeft" focusIndex="1" moveRight="2">
 			</descriptor>		
                         <descriptor id="dImageRight" region="rgImageRight" focusIndex="2" moveLeft="1"/>
@@ -30,13 +31,17 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 		<port id="pInicioEnquete" component="enquete"/>
 		
 		<context id="enquete">
-			<port id="pImageLeft" component="imageLeft"/>
-                        <port id="pImageRight" component="imageRight"/>
+			<port id="pBackgroundImage" component="backgroundImage"/>
+			<!-- <port id="pImageLeft" component="imageLeft"/>
+            <port id="pImageRight" component="imageRight"/>
 			<media id="imageLeft" type="application/x-ginga-NCLua" src="imageLeft.lua" descriptor="dImageLeft"/>
                         <media id="imageRight" type="application/x-ginga-NCLua" src="imageRight.lua" descriptor="dImageRight"/>
 			<media type="application/x-ginga-settings" id="programSettings">
 				<property name="service.currentKeyMaster" value="1"/>
 				<property name="service.currentFocus" value="1"/>
+			</media> -->
+			<media id="backgroundImage" src="media/background.jpeg" descriptor="dbackground">
+				
 			</media>
 	    </context>
 	</body>
