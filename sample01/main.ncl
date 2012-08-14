@@ -12,16 +12,14 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 		</transitionBase>
 		<regionBase>
 			<region id="rgTela" width="800" height="600">
-				<region id="rgImageLeft"  zIndex="2" width="50%" height="100%">
+				<region id="rgImages"  zIndex="2" width="100%" height="100%">
 				</region>
-                                <region id="rgImageRight"  width="50%" height="100%" top="0" right="0"/>
 			</region>
 		</regionBase>
 		<descriptorBase>
 			<descriptor id="dbackground" region="rgTela"/>
-			<descriptor id="dImageLeft" region="rgImageLeft" focusIndex="1" moveRight="2">
+			<descriptor id="dImages" region="rgImages" focusIndex="1" moveRight="2">
 			</descriptor>		
-                        <descriptor id="dImageRight" region="rgImageRight" focusIndex="2" moveLeft="1"/>
 		</descriptorBase>
 		<connectorBase>
 		</connectorBase>
@@ -40,9 +38,12 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 				<property name="service.currentKeyMaster" value="1"/>
 				<property name="service.currentFocus" value="1"/>
 			</media> -->
-			<media id="backgroundImage" src="media/background.jpeg" descriptor="dbackground">
-				
-			</media>
+			<media id="backgroundImage" src="media/background.jpeg" descriptor="dbackground"/>
+			<media id="luaMain" type="application/x-ginga-NCLua" src="main.lua" descriptor="dImages"/>
+			<media type="application/x-ginga-settings" id="programSettings">
+				<property name="service.currentKeyMaster" value="1"/>
+				<property name="service.currentFocus" value="1"/>
+			</media> 
 	    </context>
 	</body>
 </ncl>
