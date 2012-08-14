@@ -1,5 +1,5 @@
 local img = canvas:new("image1.jpg")
-canvas:compose(0,0, img )
+canvas:compose(50,200, img )
         canvas:flush()
 
 function handler (evt)

@@ -30,6 +30,7 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 		
 		<context id="enquete">
 			<port id="pBackgroundImage" component="backgroundImage"/>
+			<port id="pLua" component="luaMain"/>
 			<!-- <port id="pImageLeft" component="imageLeft"/>
             <port id="pImageRight" component="imageRight"/>
 			<media id="imageLeft" type="application/x-ginga-NCLua" src="imageLeft.lua" descriptor="dImageLeft"/>
