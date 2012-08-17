@@ -18,7 +18,7 @@ Lua Slide Show: Exibidor de fotos para TV Digital
 		</regionBase>
 		<descriptorBase>
 			<descriptor id="dbackground" region="rgTela"/>
-			<descriptor id="dImages" region="rgImages" focusIndex="1" moveRight="2">
+			<descriptor id="dImages" region="rgImages" focusIndex="1">
 			</descriptor>		
 		</descriptorBase>
 		<connectorBase>
