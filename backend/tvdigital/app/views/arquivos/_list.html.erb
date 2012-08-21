@@ -1,0 +1,6 @@
+<h1>Lista</h1>
+<div>
+    <% @arquivos.each do |arquivo| %>
+        <%= link_to image_tag(arquivo.imagem.url(:thumb), :border =>0), "full/#{arquivo.id}" %>
+    <% end %>
+</div>
