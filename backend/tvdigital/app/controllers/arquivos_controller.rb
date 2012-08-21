@@ -32,6 +32,24 @@ class ArquivosController < ApplicationController
     end
   end
 
+  def full
+    @arquivo = Arquivo.new
+    @arquivos = Arquivo.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @arquivo }
+    end
+  end
+
+  def image_full
+    @id = params[:id]
+    @arquivo = Arquivo.find(@id)
+    respond_to do |format|
+      format.html
+    end
+  end
+
   # GET /arquivos/1/edit
   def edit
     @arquivo = Arquivo.find(params[:id])
@@ -41,15 +59,11 @@ class ArquivosController < ApplicationController
   # POST /arquivos.json
   def create
     @arquivo = Arquivo.new(params[:arquivo])
+    @arquivo.save!
 
     respond_to do |format|
-      if @arquivo.save
-        format.html { redirect_to @arquivo, notice: 'Arquivo was successfully created.' }
-        format.json { render json: @arquivo, status: :created, location: @arquivo }
-      else
-        format.html { render action: "new" }
+        format.html { redirect_to root_url }
         format.json { render json: @arquivo.errors, status: :unprocessable_entity }
-      end
     end
   end
 

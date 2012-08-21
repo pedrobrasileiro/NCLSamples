@@ -1,8 +1,7 @@
-<h1>Listing arquivos</h1>
+<h1>Arquivos</h1>
 
 <table>
   <tr>
-    <th>Nome</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +9,6 @@
 
 <% @arquivos.each do |arquivo| %>
   <tr>
-    <td><%= arquivo.nome %></td>
     <td><%= link_to 'Show', arquivo %></td>
     <td><%= link_to 'Edit', edit_arquivo_path(arquivo) %></td>
     <td><%= link_to 'Destroy', arquivo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
