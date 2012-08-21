@@ -1,3 +1,6 @@
+require 'util'
+
+
 function writeText(text, x, y)
    text = "".. text
    canvas:attrColor(255,255,255,0)
@@ -9,7 +12,7 @@ end
 
 local current_page = 0
 local per_page = 6
-local images = {"media/image01.jpeg", "media/image01.jpeg", "media/image01.jpeg", "cartoon.png"}
+local images = {"media/image01.jpeg", "media/image01.jpeg", "media/image01.jpeg", "cartoon.png",  "media/MER_640_480.jpeg"}
 local total_pages = #images / 6
 
 local popup_image = nil
@@ -55,6 +58,7 @@ drawPanel(current_page)
 
 
 function handler(evt)
+	local valid_keys = {"1","2","3","4","5","6"}
   print("Evento disparado: " .. evt.class .. " " .. evt.type)
   --Verifica se uma tecla foi pressionada na aplicação NCL
   if (evt.class == 'key' and evt.type == 'press') then
@@ -79,6 +83,12 @@ function handler(evt)
   	
   	if (evt.key == "CURSOR_UP") then
   		popup_image = canvas:new("image1.jpg")
+   		canvas:compose(30,30, popup_image )
+   		canvas:flush() 
+  	end 
+  	
+  	if (array_has(valid_keys, evt.key)) then
+  		popup_image = canvas:new(images[tonumber(evt.key)])
    		canvas:compose(30,30, popup_image )
    		canvas:flush() 
   	end 
