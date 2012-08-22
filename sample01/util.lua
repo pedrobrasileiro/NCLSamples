@@ -97,6 +97,13 @@ end
 --        valores[#valores + 1] = texto
 --        return valores
 --end
+
+local clock = os.clock
+function sleep(n)  -- seconds
+  local t0 = clock()
+  while clock() - t0 <= n do end
+end
+
 function getText(width,text)
         valores = {}
         texto = ""
