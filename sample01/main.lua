@@ -74,30 +74,15 @@ function drawPanel(page)
 	
 	my_index = 1
 	for i=start_index, end_index do
-		logger("Imagem: " .. images_thumb[i] .. " a desenhar")
-		
-		drawItem(my_index,i)
+		if (images_thumb[i] ~= nil) then 
+			logger("Imagem: " .. images_thumb[i] .. " a desenhar")
+			
+			drawItem(my_index,i)
+		end 
     	my_index = my_index + 1
     end
-	
 	canvas:flush()
-
-
-	
-		
 	local first = (per_page * page) + 1
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-
-
 end
 
 -- drawPanel(current_page)
@@ -111,20 +96,22 @@ function handler(evt)
   	 	-- writeText(evt.key, 200, 200)
   		canvas:clear()
   		current_page = current_page + 1
-  		drawPanel(current_page)
+  		conexao:request("GET", address .. "/full.json?page=" .. current_page, callback)
+  		-- drawPanel(current_page)
   	end
   	
   	if (evt.key == "CURSOR_LEFT" and current_page >= 1 and not full_screen) then
   		writeText(evt.key, 200, 200)
   		canvas:clear()
   		current_page = current_page - 1
-  		drawPanel(current_page)
+  		conexao:request("GET", address .. "/full.json?page=" .. current_page, callback)
+  		-- drawPanel(current_page)
   	end 
   	
   	if (evt.key == "RED") then
   		if (full_screen) then 
   			canvas:clear()
-  			drawPanel(current_page)
+  			drawPanel(0)
   			full_screen = false
   		end
   	end
@@ -217,6 +204,9 @@ function callback(e)
 		
 	--end
 	logger("Vamos requisitar: " .. address .. table_json[1]["url_thumbs_tv"])
+	contador = 1
+	images_thumb = {}
+	
 	conexao:request("GET",address .. table_json[1]["url_thumbs_tv"], showImageFile)
  	-- table.foreach(o,print)
  	-- print ("Primes are:")
