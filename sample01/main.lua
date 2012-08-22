@@ -15,9 +15,9 @@ end
 
 function logger(text) 
 	canvas:attrColor(0,0,0,0)
-	canvas:drawRect('fill', 40, 400, 720, 30)
+	canvas:drawRect('fill', 40, 430, 720, 30)
 	-- canvas:clear(10, 450, 600, 30)
-	writeText(text, 40, 400)
+	writeText(text, 40, 430)
 end
 
 local conexao = Rest:new()
@@ -203,15 +203,18 @@ function callback(e)
 	--	end 
 		
 	--end
-	logger("Vamos requisitar: " .. address .. table_json[1]["url_thumbs_tv"])
-	contador = 1
-	images_thumb = {}
-	
-	conexao:request("GET",address .. table_json[1]["url_thumbs_tv"], showImageFile)
+	if (#table_json > 0) then 
+		logger("Vamos requisitar: " .. address .. table_json[1]["url_thumbs_tv"])
+		contador = 1
+		images_thumb = {}
+		
+		conexao:request("GET",address .. table_json[1]["url_thumbs_tv"], showImageFile)
+		logger("Recebemos!")
+	end
  	-- table.foreach(o,print)
  	-- print ("Primes are:")
  	-- table.foreach(o.primes,print)
-	logger("Recebemos!")
+	
 	-- conexao:request("GET","/system/arquivos/imagems/000/000/017/thumbs_tv/cc_CG2011_w0701_Leanna_Decker_00_Profile.jpg", showImageFile)
 	
 end
